@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- スマホでも正しく表示するための設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation</title>
+
+  <style>
+    /* ===== 全体リセット ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      background: #f6f4ef; /* ほんのりベージュ背景 */
+      color: #555;
+    }
+
+    /* ===== ページ全体 ===== */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 16px; /* スマホ用余白 */
+    }
+
+    /* ===== フォームカード ===== */
+    .reservation-box {
+      width: 100%;
+      max-width: 420px; /* PCで広がりすぎない */
+      background: #fff;
+      padding: 40px 28px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    /* ===== タイトル ===== */
+    .title {
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      margin-bottom: 32px;
+      color: #777;
+    }
+
+    /* ===== 各入力グループ ===== */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 8px;
+      color: #666;
+    }
+
+    /* 入力欄共通デザイン */
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      background: #fff;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical; /* 縦方向のみサイズ変更OK */
+      min-height: 80px;
+    }
+
+    /* フォーカス時（クリック時） */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #c9a35c;
+    }
+
+    /* ===== 予約ボタン ===== */
+    .submit-btn {
+      margin-top: 32px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 999px; /* 丸いボタン */
+      background: linear-gradient(90deg, #d9b46f, #c9a35c);
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* ===== スマホ微調整 ===== */
+    @media (max-width: 480px) {
+      .reservation-box {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="reservation-box">
+
+      <div class="title">MAKE A RESERVATION</div>
+
+      <!-- 名前 -->
+      <div class="form-group">
+        <label for="name">お名前</label>
+        <input type="text" id="name" placeholder="山田 太郎">
+      </div>
+
+      <!-- メール -->
+      <div class="form-group">
+        <label for="email">ご連絡先</label>
+        <input type="email" id="email" placeholder="メールアドレス">
+      </div>
+
+      <!-- 希望日 -->
+      <div class="form-group">
+        <label for="date">来店日</label>
+        <input type="date" id="date">
+      </div>
+
+      <!-- 希望時間 -->
+      <div class="form-group">
+        <label for="time">来店時間</label>
+        <select id="time">
+          <option>時間を選択してください</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>12:00</option>
+          <option>13:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+        </select>
+      </div>
+
+      <!-- 人数 -->
+      <div class="form-group">
+        <label for="people">人数</label>
+        <select id="people">
+          <option>人数を選択してください</option>
+          <option>1名</option>
+          <option>2名</option>
+          <option>3名</option>
+          <option>4名</option>
+        </select>
+      </div>
+
+      <!-- メッセージ -->
+      <div class="form-group">
+        <label for="message">メッセージ</label>
+        <textarea id="message" placeholder="ご要望などがあればご記入ください"></textarea>
+      </div>
+
+      <!-- 送信ボタン -->
+      <button class="submit-btn">予約する</button>
+
+    </div>
+  </div>
+</body>
+</html>
