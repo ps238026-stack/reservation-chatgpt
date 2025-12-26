@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserve | MAKE A RESERVATION</title>
+
+<style>
+/* ===== 全体リセット ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Serif JP", "Times New Roman", serif;
+  background: linear-gradient(
+    135deg,
+    #f6f3ef 25%,
+    #f2eee9 25%,
+    #f2eee9 50%,
+    #f6f3ef 50%,
+    #f6f3ef 75%,
+    #f2eee9 75%
+  );
+  background-size: 40px 40px;
+  color: #6b5c4d;
+}
+
+/* ===== 全体レイアウト ===== */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ===== 左のタイトルエリア ===== */
+.left {
+  flex: 1;
+  padding: 40px;
+}
+
+.left h1 {
+  font-size: 64px;
+  letter-spacing: 0.3em;
+  font-weight: normal;
+  margin: 0 0 20px;
+}
+
+.left p {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+}
+
+.left .line {
+  width: 40px;
+  height: 1px;
+  background: #c8b79e;
+  margin-top: 20px;
+}
+
+/* ===== 右のフォームカード ===== */
+.card {
+  width: 420px;
+  background: #faf9f7;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ===== フォーム共通 ===== */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d8cfc2;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* ===== 予約ボタン ===== */
+button {
+  width: 100%;
+  padding: 14px;
+  background: #c8b79e;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== 予約完了画面 ===== */
+.complete {
+  display: none;
+  text-align: center;
+}
+
+.complete h2 {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.complete p {
+  font-size: 14px;
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .left {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .left h1 {
+    font-size: 40px;
+    letter-spacing: 0.2em;
+  }
+
+  .left .line {
+    margin: 20px auto 0;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- 左側タイトル -->
+  <div class="left">
+    <h1>Reserve</h1>
+    <p>MAKE A RESERVATION</p>
+    <div class="line"></div>
+  </div>
+
+  <!-- 右側フォーム -->
+  <div class="card">
+
+    <!-- 入力フォーム -->
+    <form id="reserveForm">
+      <div class="form-group">
+        <label>お名前</label>
+        <input type="text" required placeholder="山田 太郎">
+      </div>
+
+      <div class="form-group">
+        <label>ご連絡先</label>
+        <input type="text" required placeholder="メールアドレスまたは電話番号">
+      </div>
+
+      <div class="form-group">
+        <label>来店日</label>
+        <input type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label>来店時間</label>
+        <select required>
+          <option value="">時間を選択してください</option>
+          <option>11:00</option>
+          <option>12:00</option>
+          <option>13:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+          <option>17:00</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>メッセージ</label>
+        <textarea placeholder="ご要望などがあればご記入ください"></textarea>
+      </div>
+
+      <button type="submit">予約する</button>
+    </form>
+
+    <!-- 予約完了表示 -->
+    <div class="complete" id="complete">
+      <h2>予約が完了しました</h2>
+      <p>ご予約ありがとうございます。<br>当日のご来店をお待ちしております。</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ===== 予約ボタンを押したときの処理 ===== */
+const form = document.getElementById("reserveForm");
+const complete = document.getElementById("complete");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // ページ遷移を止める
+
+  // フォームを非表示
+  form.style.display = "none";
+
+  // 完了メッセージを表示
+  complete.style.display = "block";
+});
+</script>
+
+</body>
+</html>
